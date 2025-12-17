@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Efe İkan | Blog</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #000814;
+      --bg-mid: #001d3d;
+      --accent: #00b4ff;
+      --accent-soft: #4cc9f0;
+      --text-main: #e6edf3;
+      --glass: rgba(255,255,255,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, var(--bg-mid), var(--bg-dark));
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #bcdcff;
+      font-size: 0.9rem;
+      transition: color .3s;
+    }
+
+    .contact-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .contact-btn {
+      padding: 8px 14px;
+      border: 1px solid rgba(0,180,255,0.4);
+      border-radius: 20px;
+      background: rgba(0,180,255,0.08);
+    }
+
+    .contact-dropdown {
+      position: absolute;
+      right: 0;
+      top: 130%;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      padding: 16px 18px;
+      border-radius: 14px;
+      min-width: 220px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.6);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: all .3s ease;
+    }
+
+    .contact-dropdown p {
+      font-size: 0.85rem;
+      color: #d6e6ff;
+      margin-bottom: 8px;
+    }
+
+    .contact-dropdown p:last-child { margin-bottom: 0; }
+
+    .contact-wrapper.active .contact-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+      margin-left: 24px;
+      text-decoration: none;
+      color: #bcdcff;
+      font-size: 0.9rem;
+      transition: color .3s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transform-style: preserve-3d;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 520px;
+      margin-top: 16px;
+      color: #c7dfff;
+    }
+
+    main {
+      padding: 120px 8% 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      perspective: 1200px;
+    }
+
+    .card {
+      background: var(--glass);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+      transform: rotateY(-12deg) rotateX(6deg);
+      transition: transform .6s ease, box-shadow .4s, opacity .4s;
+      opacity: 0;
+      transform-style: preserve-3d;
+    }
+
+    .card.visible { opacity: 1; }
+
+    .card:hover {
+      transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+      box-shadow: 0 30px 60px rgba(0,180,255,.35);
+    }
+
+    .card h3 {
+      color: var(--accent-soft);
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #d6e6ff;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 18px;
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      background: rgba(0,0,0,.6);
+      font-size: 0.8rem;
+      color: #7aaedb;
+    }
+
+    @media(max-width: 768px) {
+      .hero h2 { font-size: 2.2rem; }
+      header { padding: 16px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>EFE İKAN</h1>
+  <nav>
+    <a href="#" id="nav-home">Ana Sayfa</a>
+    <a href="#" id="nav-about">Hakkımda</a>
+    <div class="contact-wrapper">
+      <a href="#" id="nav-contact" class="contact-btn">İletişim</a>
+      <div class="contact-dropdown" id="contact-dropdown">
+        <p>📧 mail@efeikan.com</p>
+        <p>💼 linkedin.com/in/efeikan</p>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Karanlık Arayüz, Derin Düşünce</h2>
+  <p>Bu blog; kod, fikir ve geleceğin kesişim noktasında durur.</p>
+</section>
+
+<main id="content"></main>
+
+<footer>
+  © 2025 Efe İkan — Dijital düşünce günlüğü
+</footer>
+
+<script>
+  const posts = [
+    { title: "CSS ile 3D Perspektif", text: "Sadece birkaç satır CSS ile web'e derinlik kazandırmak mümkün." },
+    { title: "Minimalizm ve Karanlık UI", text: "Siyah arayüzler sadece estetik değil, zihinsel bir tercihtir." },
+    { title: "Geleceğin Web Deneyimi", text: "Statik sayfalar yerini hissedilen arayüzlere bırakıyor." }
+  ];
+
+  const content = document.getElementById('content');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+
+  function observeCards() {
+    document.querySelectorAll('.card').forEach(c => observer.observe(c));
+  }
+
+  function renderBlog() {
+    content.innerHTML = '';
+    posts.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<h3>${p.title}</h3><p>${p.text}</p><a href="#">Devamını Oku</a>`;
+      content.appendChild(card);
+    });
+    observeCards();
+  }
+
+  function renderAbout() {
+    content.innerHTML = `
+      <div class="card visible">
+        <h3>Hakkımda</h3>
+        <p>Ben Efe İkan. Yazılım, tasarım ve dijital düşünce kesişiminde üreten bir geliştiriciyim.</p>
+      </div>`;
+  }
+
+   renderBlog(); };
+  document.getElementById('nav-about').onclick = e => { e.preventDefault(); renderAbout(); };
+  document.getElementById('nav-contact').onclick = e => {
+    e.preventDefault();
+    document.querySelector('.contact-wrapper').classList.toggle('active');
+  }; renderContact(); };
+
+  renderBlog();
+
+  document.addEventListener('mousemove', e => {
+    const x = (window.innerWidth / 2 - e.clientX) / 30;
+    const y = (window.innerHeight / 2 - e.clientY) / 30;
+    document.querySelector('.hero').style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+  });
+</script>
+
+</body>
+</html>
